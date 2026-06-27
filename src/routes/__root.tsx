@@ -87,10 +87,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "DJ Bony — Som, Energia e Conexão" },
       { property: "og:description", content: "Transforme seu evento em uma experiência inesquecível." },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "/og-logo.jpg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "DJ Bony — Som, Energia e Conexão" },
       // ── Twitter ──
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "DJ Bony — Som, Energia e Conexão" },
       { name: "twitter:description", content: "Transforme seu evento em uma experiência inesquecível." },
+      { name: "twitter:image", content: "/og-logo.jpg" },
       // ── Segurança ──
       { httpEquiv: "X-Content-Type-Options", content: "nosniff" },
       { httpEquiv: "Referrer-Policy", content: "strict-origin-when-cross-origin" },
