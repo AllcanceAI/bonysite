@@ -98,7 +98,7 @@ export function IntroOverlay() {
         /* ── Rotator de frases ── */
         .dj-rotator {
           position: relative;
-          width: 90%;
+          width: 92%;
           max-width: 860px;
           height: 1.4em;
           font-family: 'Outfit', 'Inter', sans-serif;
@@ -108,6 +108,45 @@ export function IntroOverlay() {
           letter-spacing: -0.02em;
           text-align: center;
           color: rgba(255,255,255,0.93);
+        }
+
+        /* ── Mobile: ajustes da intro ── */
+        @media (max-width: 600px) {
+          .dj-rotator {
+            font-size: clamp(1.25rem, 7vw, 1.9rem);
+            height: auto;
+            min-height: 2.8em;
+            width: 95%;
+          }
+          .dj-phrase {
+            white-space: normal !important;
+            width: 95vw;
+            text-align: center;
+          }
+          .dj-phrase-mais {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: baseline;
+            gap: 0.2em;
+            width: 95vw;
+            white-space: normal;
+          }
+          .dj-static {
+            font-size: clamp(1.25rem, 7vw, 1.9rem);
+          }
+          .dj-phrase.dj-final {
+            font-size: clamp(1.1rem, 6vw, 1.7rem);
+            width: 95vw;
+          }
+          .dj-eq {
+            bottom: 1.5rem;
+            gap: 3px;
+            height: 20px;
+          }
+          .dj-eq-bar {
+            width: 3px;
+          }
         }
 
         /* ── Frases ── */
@@ -227,6 +266,13 @@ export function IntroOverlay() {
         }
         @media(prefers-reduced-motion:reduce){
           .dj-intro-overlay{animation:none;opacity:0;visibility:hidden}
+        }
+
+        /* ── Telas muito pequenas (< 380px) ── */
+        @media (max-width: 380px) {
+          .dj-rotator {
+            font-size: clamp(1rem, 8vw, 1.4rem);
+          }
         }
       `}</style>
 
