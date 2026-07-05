@@ -1425,8 +1425,8 @@ function Index() {
         <Navbar />
         <Hero />
         <EventTypes />
-        <AboutInstagram />
         <BigNames />
+        <AboutInstagram />
         <Estrutura />
         <Packages />
         <Footer />
