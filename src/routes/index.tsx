@@ -239,7 +239,7 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="mt-5 font-display text-4xl leading-tight tracking-wide sm:text-5xl md:text-6xl"
+            className="mt-5 font-display text-3xl leading-tight tracking-wide sm:text-4xl md:text-5xl lg:text-6xl"
           >
             A <span className="text-primary">MÚSICA</span> MOVE, <br />
             A <span className="text-primary">ENERGIA</span> CONECTA, <br />
