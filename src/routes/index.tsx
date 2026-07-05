@@ -224,8 +224,8 @@ function Hero() {
   return (
     <section id="home" className="relative overflow-hidden">
       <div className="absolute inset-0">
-        <img src={heroDj} alt="" width={1280} height={1600} className="h-full w-full object-cover object-right opacity-80 sm:opacity-90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/20 sm:to-background/10" />
+        <img src={heroDj} alt="" width={1280} height={1600} className="h-full w-full object-cover object-right opacity-95 sm:opacity-90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent md:from-background md:via-background/90 md:to-background/20" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
       </div>
       <LaserBackdrop />
@@ -239,17 +239,17 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="mt-5 font-display text-3xl leading-tight tracking-wide sm:text-4xl md:text-5xl lg:text-6xl"
+            className="mt-5 font-display text-3xl leading-tight tracking-wide sm:text-4xl md:text-5xl lg:text-6xl max-w-[80%] sm:max-w-none"
           >
             A <span className="text-primary">MÚSICA</span> MOVE, <br />
             A <span className="text-primary">ENERGIA</span> CONECTA, <br />
             E A <span className="text-primary">VIBE</span> FICA!
           </motion.p>
-          <p className="mt-6 max-w-md text-base text-foreground/85 sm:text-lg md:text-xl">
+          <p className="mt-6 max-w-[80%] text-base text-foreground/85 sm:max-w-md sm:text-lg md:text-xl">
             Transformo qualquer evento em uma experiência inesquecível com som,
             energia e conexão do início ao fim.
           </p>
-          <div className="mt-7 flex flex-wrap gap-3">
+          <div className="mt-7 flex flex-wrap gap-3 max-w-[80%] sm:max-w-none">
             <a
               href={WHATSAPP_URL}
               target="_blank"
