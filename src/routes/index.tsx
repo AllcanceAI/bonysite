@@ -3,7 +3,7 @@ import { motion, AnimatePresence, useScroll, useSpring, useMotionValue, useTrans
 import { useState, useEffect, useRef, type CSSProperties, type PointerEvent } from "react";
 import {
   Headphones, Users, Music, Zap, Star, Crown, Globe, Briefcase,
-  Speaker, Gem, CheckCircle2, Play, MessageCircle, Instagram, Youtube,
+  Speaker, Gem, CheckCircle2, Play, Pause, MessageCircle, Instagram, Youtube,
   Menu, X, Lightbulb, Mic2, Disc3, Sparkles, Volume2, Cable, Mail,
 } from "lucide-react";
 import logoBony from "@/assets/logo-dj-bony.jpg";
@@ -59,6 +59,8 @@ function makeCandle(prevClose: number): Candle {
 
 function Equalizer({ className = "" }: { className?: string }) {
   const COUNT = 28;
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const [candles, setCandles] = useState<Candle[]>(() => {
     const arr: Candle[] = [];
     let prev = 50;
@@ -71,6 +73,21 @@ function Equalizer({ className = "" }: { className?: string }) {
   });
 
   useEffect(() => {
+    // Tenta reprodução automática no carregamento
+    const playAttempt = setTimeout(() => {
+      if (audioRef.current) {
+        audioRef.current.play()
+          .then(() => setIsPlaying(true))
+          .catch((err) => {
+            console.log("Autoplay bloqueado pelo navegador. Interação do usuário necessária.");
+          });
+      }
+    }, 1000);
+    return () => clearTimeout(playAttempt);
+  }, []);
+
+  useEffect(() => {
+    if (!isPlaying) return;
     const id = setInterval(() => {
       setCandles((prev) => {
         const last = prev[prev.length - 1];
@@ -79,7 +96,19 @@ function Equalizer({ className = "" }: { className?: string }) {
       });
     }, 650);
     return () => clearInterval(id);
-  }, []);
+  }, [isPlaying]);
+
+  const togglePlay = () => {
+    if (!audioRef.current) return;
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      audioRef.current.play()
+        .then(() => setIsPlaying(true))
+        .catch((err) => console.log(err));
+    }
+  };
 
   return (
     <div
@@ -95,10 +124,28 @@ function Equalizer({ className = "" }: { className?: string }) {
           backgroundSize: "100% 25%",
         }}
       />
-      {/* live tag */}
-      <div className="pointer-events-none absolute right-2 top-1 flex items-center gap-1 rounded-sm bg-background/70 px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-widest text-primary">
-        <span className="h-1 w-1 animate-pulse rounded-full bg-primary box-glow" /> LIVE
-      </div>
+      
+      {/* Play/Pause Button */}
+      <button
+        onClick={togglePlay}
+        className="absolute right-2 top-1.5 z-20 flex items-center gap-1.5 rounded bg-primary px-2 py-1 text-[8px] font-bold uppercase tracking-widest text-primary-foreground hover:scale-105 hover:bg-primary/95 transition-all shadow-[0_0_10px_rgba(239,68,68,0.3)]"
+      >
+        {isPlaying ? (
+          <>
+            <Pause className="h-2.5 w-2.5 fill-current" /> Pausar
+          </>
+        ) : (
+          <>
+            <Play className="h-2.5 w-2.5 fill-current" /> Ouvir Música
+          </>
+        )}
+      </button>
+
+      <audio
+        ref={audioRef}
+        src="https://p.scdn.co/mp3-preview/a6d0c64c489d27038753235b2e59df1a073f17d2"
+        loop
+      />
 
       {candles.map((c, i) => {
         const up = c.close >= c.open;
