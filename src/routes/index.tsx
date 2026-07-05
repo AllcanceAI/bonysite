@@ -233,7 +233,7 @@ function Hero() {
         <div className="h-[420px] w-[260px] border-r-2 border-t-2 border-primary box-glow rotate-6" />
       </div>
 
-      <div className="relative z-10 grid gap-10 px-4 pb-16 pt-4 sm:px-6 md:grid-cols-2 md:px-10 md:pb-32 md:pt-10">
+      <div className="relative z-10 grid min-h-[75vh] items-center gap-10 px-4 pb-24 pt-20 sm:px-6 md:grid-cols-2 md:px-10 md:pb-32 md:pt-28 md:min-h-[85vh]">
         <div className="flex flex-col justify-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
