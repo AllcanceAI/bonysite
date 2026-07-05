@@ -282,58 +282,7 @@ function Hero() {
   );
 }
 
-function StatsBar() {
-  const items = [
-    { icon: Headphones, big: "+10 ANOS", small: "DE EXPERIÊNCIA" },
-    { icon: Users, big: "+200", small: "EVENTOS REALIZADOS" },
-    { icon: Music, big: "DIVERSOS", small: "ESTILOS MUSICAIS" },
-    { icon: Zap, big: "ENERGIA", small: "DO INÍCIO AO FIM" },
-    { icon: Star, big: "EQUIPAMENTOS", small: "DE ALTO PADRÃO" },
-  ];
-  return (
-    <section className="relative px-4 sm:px-6 md:px-10">
-      <div className="relative overflow-hidden rounded-2xl bg-transparent">
-        {/* Pulsing equalizer backdrop */}
-        <div className="pointer-events-none absolute inset-0 flex items-end justify-center gap-1 px-2 opacity-25 sm:gap-1.5">
-          {Array.from({ length: 56 }).map((_, i) => (
-            <span
-              key={i}
-              className="eq-bar w-1 rounded-t-sm bg-gradient-to-t from-primary/20 via-primary/60 to-primary sm:w-1.5"
-              style={{
-                height: "100%",
-                animationDelay: `${(i % 11) * 0.09}s`,
-                animationDuration: `${0.7 + (i % 5) * 0.18}s`,
-              }}
-            />
-          ))}
-        </div>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background via-background/60 to-transparent" />
 
-        <div className="relative grid grid-cols-1 gap-3 sm:grid-cols-3 md:grid-cols-5">
-          {items.map((it, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              whileHover={{ y: -4 }}
-              className="flex flex-row items-center gap-3 rounded-xl border border-border bg-card/80 px-4 py-3 text-left backdrop-blur-sm shadow-lg hover:border-primary/60 hover:shadow-[0_0_20px_var(--neon-glow)] transition-all sm:flex-col sm:items-center sm:gap-2 sm:px-4 sm:py-6 sm:text-center"
-            >
-              <it.icon className="h-5 w-5 shrink-0 text-primary sm:h-7 sm:w-7" strokeWidth={2.2} />
-              <div className="flex flex-col sm:items-center">
-                <div className="font-display text-sm tracking-wide leading-tight sm:text-lg">{it.big}</div>
-                <div className="text-[8px] font-semibold uppercase tracking-widest text-muted-foreground sm:text-[10px]">
-                  {it.small}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 
 /* ---------- Continuous horizontal slider ---------- */
@@ -1475,7 +1424,6 @@ function Index() {
       <div className="mx-auto w-full max-w-[1440px]">
         <Navbar />
         <Hero />
-        <StatsBar />
         <EventTypes />
         <AboutInstagram />
         <BigNames />
