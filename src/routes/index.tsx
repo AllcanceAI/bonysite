@@ -224,8 +224,8 @@ function Hero() {
   return (
     <section id="home" className="relative overflow-hidden">
       <div className="absolute inset-0">
-        <img src={heroDj} alt="" width={1280} height={1600} className="h-full w-full object-cover object-right opacity-95 sm:opacity-90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent md:from-background md:via-background/90 md:to-background/20" />
+        <img src={heroDj} alt="" width={1280} height={1600} className="h-full w-full object-cover object-right opacity-80 sm:opacity-90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/20 sm:to-background/10" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
       </div>
       <LaserBackdrop />
@@ -233,8 +233,13 @@ function Hero() {
         <div className="h-[420px] w-[260px] border-r-2 border-t-2 border-primary box-glow rotate-6" />
       </div>
 
-      <div className="relative z-10 grid min-h-[75vh] items-center gap-10 px-4 pb-24 pt-20 sm:px-6 md:grid-cols-2 md:px-10 md:pb-32 md:pt-28 md:min-h-[85vh]">
+      <div className="relative z-10 grid gap-10 px-4 pb-16 pt-4 sm:px-6 md:grid-cols-2 md:px-10 md:pb-32 md:pt-10">
         <div className="flex flex-col justify-center">
+          <div className="mb-5 flex flex-wrap items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-foreground sm:gap-3 sm:text-xs sm:tracking-[0.35em]">
+            <span>Som</span><span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            <span>Energia</span><span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            <span>Conexão</span>
+          </div>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -247,17 +252,17 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="mt-5 font-display text-3xl leading-tight tracking-wide sm:text-4xl md:text-5xl lg:text-6xl max-w-[80%] sm:max-w-none"
+            className="mt-5 font-display text-2xl italic leading-tight sm:text-3xl md:text-4xl"
           >
-            A <span className="text-primary">MÚSICA</span> MOVE, <br />
+            A MÚSICA MOVE, <br />
             A <span className="text-primary">ENERGIA</span> CONECTA, <br />
             E A <span className="text-primary">VIBE</span> FICA!
           </motion.p>
-          <p className="mt-6 max-w-[80%] text-base text-foreground/85 sm:max-w-md sm:text-lg md:text-xl">
+          <p className="mt-5 max-w-md text-sm text-foreground/85 sm:mt-6 md:text-base">
             Transformo qualquer evento em uma experiência inesquecível com som,
             energia e conexão do início ao fim.
           </p>
-          <div className="mt-7 flex flex-wrap gap-3 max-w-[80%] sm:max-w-none">
+          <div className="mt-7 flex flex-wrap gap-3">
             <a
               href={WHATSAPP_URL}
               target="_blank"
