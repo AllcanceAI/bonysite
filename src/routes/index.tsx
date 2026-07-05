@@ -451,11 +451,8 @@ function EventTypes() {
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
           </div>
-          <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-3 bg-gradient-to-t from-background via-background/85 to-transparent px-3 pb-5 pt-16">
-            <div className="rounded-full border border-primary bg-background p-3 ring-neon transition-transform group-hover:scale-110">
-              <e.icon className="h-5 w-5 text-primary" />
-            </div>
-            <p className="text-center text-xs font-bold uppercase tracking-widest">
+          <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-3 bg-gradient-to-t from-background via-background/85 to-transparent px-3 pb-8 pt-16">
+            <p className="text-center text-sm font-bold uppercase tracking-widest text-foreground">
               {e.label}
             </p>
           </div>
