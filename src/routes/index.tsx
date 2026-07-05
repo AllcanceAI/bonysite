@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, type CSSProperties, type PointerEvent } fr
 import {
   Headphones, Users, Music, Zap, Star, Crown, Globe, Briefcase,
   Speaker, Gem, CheckCircle2, Play, MessageCircle, Instagram, Youtube,
-  Menu, X, Lightbulb, Mic2, Disc3, Sparkles, Volume2, Cable,
+  Menu, X, Lightbulb, Mic2, Disc3, Sparkles, Volume2, Cable, Mail,
 } from "lucide-react";
 import logoBony from "@/assets/logo-dj-bony.jpg";
 import heroDj from "@/assets/hero-dj.jpg";
@@ -997,8 +997,9 @@ function Footer() {
             <a href={YOUTUBE_URL} target="_blank" rel="noreferrer" aria-label="YouTube" className="rounded-md border border-border p-2 hover:border-primary"><Youtube className="h-5 w-5" /></a>
             <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" aria-label="WhatsApp" className="rounded-md border border-border p-2 hover:border-primary"><MessageCircle className="h-5 w-5" /></a>
             <a href={SPOTIFY_URL} target="_blank" rel="noreferrer" aria-label="Spotify" className="rounded-md border border-border p-2 hover:border-primary"><Headphones className="h-5 w-5" /></a>
+            <a href="mailto:contato@djbony.com?subject=Orçamento%20para%20Evento%20-%20DJ%20Bony&body=Olá%20DJ%20Bony,%20tudo%20bem?%0D%0A%0D%0AGostaria%20de%20solicitar%20um%20orçamento%20de%20prestação%20de%20serviço%20de%20DJ%20para%20o%20meu%20evento.%0D%0A%0D%0ADetalhes%20do%20Evento:%0D%0A-%20Tipo%20de%20Evento%20(Casamento,%20Aniversário,%20Corporativo,%20etc.):%20%0D%0A-%20Data%20desejada:%20%0D%0A-%20Local/Cidade:%20%0D%0A-%20Número%20aproximado%20de%20convidados:%20%0D%0A%0D%0AAguardando%20seu%20retorno!%0D%0A%0D%0AAtenciosamente," aria-label="E-mail" className="rounded-md border border-border p-2 hover:border-primary text-foreground hover:text-primary"><Mail className="h-5 w-5" /></a>
           </div>
-          <p className="mt-4 text-sm text-muted-foreground">@bonylima</p>
+          <p className="mt-4 text-sm text-muted-foreground">contato@djbony.com</p>
         </div>
       </div>
     </footer>

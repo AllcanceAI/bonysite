@@ -4,13 +4,10 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
-  HeadContent,
-  Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect } from "react";
 
-import appCss from "../styles.css?url";
-import { reportAppError } from "../lib/lovable-error-reporting";
+import { reportAppError } from "../lib/app-error-reporting";
 import { IntroOverlay } from "../components/IntroOverlay";
 
 function NotFoundComponent() {
@@ -74,70 +71,23 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      // ── SEO ──
-      { title: "DJ Bony — Som, Energia e Conexão para o seu evento" },
-      { name: "description", content: "DJ Bony: +10 anos de experiência, +200 eventos. Som de alto padrão para casas de show, baladas, eventos sociais e corporativos." },
-      { name: "author", content: "DJ Bony" },
-      { name: "robots", content: "index, follow" },
-      // ── Open Graph ──
-      { property: "og:title", content: "DJ Bony — Som, Energia e Conexão" },
-      { property: "og:description", content: "Transforme seu evento em uma experiência inesquecível." },
-      { property: "og:type", content: "website" },
-      { property: "og:image", content: "/og-logo.jpg" },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "DJ Bony — Som, Energia e Conexão" },
-      // ── Twitter ──
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "DJ Bony — Som, Energia e Conexão" },
-      { name: "twitter:description", content: "Transforme seu evento em uma experiência inesquecível." },
-      { name: "twitter:image", content: "/og-logo.jpg" },
-      // ── Segurança ──
-      { httpEquiv: "X-Content-Type-Options", content: "nosniff" },
-      { httpEquiv: "Referrer-Policy", content: "strict-origin-when-cross-origin" },
-      { name: "format-detection", content: "telephone=no" },
-      { name: "theme-color", content: "#0d0000" },
-      { name: "color-scheme", content: "dark" },
-    ],
-    links: [
-      { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700&display=swap",
-      },
-    ],
-  }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
 
-function RootShell({ children }: { children: ReactNode }) {
-  return (
-    <html lang="pt-BR">
-      <head>
-        <HeadContent />
-      </head>
-      <body
-        onContextMenu={(e) => e.preventDefault()}
-        onDragStart={(e) => e.preventDefault()}
-      >
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
-
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  useEffect(() => {
+    const preventDefault = (e: Event) => e.preventDefault();
+    document.body.addEventListener("contextmenu", preventDefault);
+    document.body.addEventListener("dragstart", preventDefault);
+    return () => {
+      document.body.removeEventListener("contextmenu", preventDefault);
+      document.body.removeEventListener("dragstart", preventDefault);
+    };
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
