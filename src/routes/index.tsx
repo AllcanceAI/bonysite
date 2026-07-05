@@ -235,6 +235,14 @@ function Hero() {
 
       <div className="relative z-10 grid min-h-[75vh] items-center gap-10 px-4 pb-24 pt-20 sm:px-6 md:grid-cols-2 md:px-10 md:pb-32 md:pt-28 md:min-h-[85vh]">
         <div className="flex flex-col justify-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="font-display text-5xl leading-[0.9] tracking-wide sm:text-6xl md:text-8xl"
+          >
+            DJ <span className="text-primary text-glow">BONY</span>
+          </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
