@@ -591,10 +591,7 @@ function Packages() {
             )}
 
             <div className="relative">
-              <div className="inline-flex h-14 w-14 items-center justify-center rounded-xl border border-border bg-background">
-                <p.icon className="h-7 w-7 text-primary" strokeWidth={1.8} />
-              </div>
-              <h3 className="mt-5 font-display text-xl tracking-wide sm:text-2xl">
+              <h3 className="mt-2 font-display text-xl tracking-wide sm:text-2xl">
                 {p.title}
               </h3>
               {p.sub && (
